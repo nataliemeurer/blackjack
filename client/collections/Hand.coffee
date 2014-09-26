@@ -7,6 +7,13 @@ class window.Hand extends Backbone.Collection
   hit: ->
     @add(@deck.pop()).last()
 
+  # write stand-> to do
+  stand: ->
+    @trigger 'stand', @
+    # flip dealer's first card from it's array[0]
+    # check if dealer's score is greater than 15
+      # if it is, hit dealer
+
   scores: ->
     # The scores are an array of potential scores.
     # Usually, that array contains one element. That is the only score.
