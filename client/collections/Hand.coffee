@@ -29,9 +29,8 @@ class window.Hand extends Backbone.Collection
     if hasAce then [score, score + 10] else [score]
 
   checkBust: ->
-    console.log "toto"
     if @scores()[1]
       if @scores()[0] > 21
-        alert "busted"
+        @trigger 'bust', @
     else if @scores()[0] > 21
-      alert "busted"
+      @trigger 'bust', @

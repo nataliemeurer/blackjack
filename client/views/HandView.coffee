@@ -10,9 +10,13 @@ class window.HandView extends Backbone.View
     @render()
 
   render: ->
+    if not @collection.scores()[1]
+     score = "#{@collection.scores()[0]}"
+    else
+      score = "#{@collection.scores()[0]} / #{@collection.scores()[1]}"
     @$el.children().detach()
     @$el.html @template @collection
     @$el.append @collection.map (card) ->
       new CardView(model: card).$el
-    @$('.score').text @collection.scores()[0]
+    @$('.score').text score
 
