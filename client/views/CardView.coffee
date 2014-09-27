@@ -1,12 +1,13 @@
 class window.CardView extends Backbone.View
 
-  className: 'card'
-
-  template: _.template '<%= rankName %> of <%= suitName %>'
-
   initialize: ->
     @model.on 'change', => @render
     @render()
+
+  className: "card"
+
+  template: _.template '<image src= "img/cards/<%= rankName %>-<%= suitName %>.png"></image>'
+
 
   render: ->
     @$el.children().detach().end().html

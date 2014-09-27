@@ -6,11 +6,13 @@ class window.Hand extends Backbone.Collection
 
   hit: ->
     @add(@deck.pop()).last()
+    @checkBust()
 
   # write stand-> to do
-  stand: ->
-    @trigger 'stand', @
-    # flip dealer's first card from it's array[0]
+  # stand: ->
+  #   @trigger 'stand', @
+  #   console.log 'stand event triggered'
+  #   # flip dealer's first card from it's array[0]
     # check if dealer's score is greater than 15
       # if it is, hit dealer
 
@@ -25,3 +27,11 @@ class window.Hand extends Backbone.Collection
       score + if card.get 'revealed' then card.get 'value' else 0
     , 0
     if hasAce then [score, score + 10] else [score]
+
+  checkBust: ->
+    console.log "toto"
+    if @scores()[1]
+      if @scores()[0] > 21
+        alert "busted"
+    else if @scores()[0] > 21
+      alert "busted"
